@@ -1,0 +1,54 @@
+version: '3'
+services:
+  django:
+    image: votos:0.1
+    user: "${UID}:${GID}"
+    restart: always
+    volumes:
+      - ./src/django/:/usr/src/app
+      - ./data/static/:/usr/src/static
+      #- ./data/admin/:/usr/local/lib/python3.7/site-packages/django/contrib/admin/static/admin
+      #- ./data/admin/:/tmp/admin
+    environment:
+      DB_HOST: postgres
+      DB_NAME: dbvotos
+      DB_USER: usrvotos
+      DB_PASSWORD: dj4n60votos
+      #DJANGO_ADMIN_URL: administrator
+      DJANGO_SU_NAME: admin
+      DJANGO_SU_EMAIL: admin@django.com
+      DJANGO_SU_PASSWORD: 1234
+    depends_on:
+      - "postgres"
+
+  postgres:
+    image: postgres:9.6
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: dj4n60votos
+      POSTGRES_USER: usrvotos
+      POSTGRES_DB: dbvotos
+    volumes:
+     - ./data/dbdata:/var/lib/postgresql/data
+
+
+  phppgadmin:
+    image: einfallstoll/phppgadmin
+    restart: always
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DAFAULTDB: dbvotos
+    ports:
+     - 81:80
+
+  nginx:
+    image: nginx:1.15
+    ports:
+      - "83:8000"
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./data/static:/static
+      - ./data/admin:/static/admin
+
+    depends_on:
+      - "django"

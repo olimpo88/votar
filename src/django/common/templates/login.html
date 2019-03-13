@@ -1,0 +1,126 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Login Screen</title>
+  <meta name="author" content="Peralta Leandro">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/common/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="/static/common/css/style.css?v=0.1" rel="stylesheet" id="bootstrap-css">
+  <link href="https://fonts.googleapis.com/css?family=Muli|Oswald" rel="stylesheet">
+  <script src="/static/common/js/jquery-1.10.2.min.js"></script>
+  <script src="/static/common/js/bootstrap.min.js"></script>
+  <script>
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+        }
+      }
+      return cookieValue;
+    }
+  
+    function enviar(){
+      var passwd = document.getElementById("password").value;
+      var username = document.getElementById("username").value;
+
+        //data: { username: username, password: passwd, csrfmiddlewaretoken: getCookie('csrftoken')},
+        //{% csrf_token %}
+      var csr= $( "input[name$='csrfmiddlewaretoken']" ).val();
+      $.ajax({url:"/common/dologin/",
+        type: "POST",
+        data: { username: username, password: passwd, csrfmiddlewaretoken: csr },
+        success:function(result){
+          var myObject = eval('(' + result + ')');
+          console.log(myObject);
+            //Si el login es correcto lo mando a la pagina que corresponde
+            if (myObject['success']==true){
+              location.href="/main/";
+            }
+            else{
+              $('#error').html(myObject['errors']['reason']).show(200);
+            }
+        }
+      });
+    }
+  </script>
+    
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .form-signin{
+      background: rgba(0,0,0,0.6);
+      border-radius: 10px;
+      border: 1px solid #636363;
+      margin-top: 10%;
+    }
+
+    .form-signin .form-signin-heading{
+      margin: 5px;
+      margin-bottom: 20px;
+    }
+  
+    .form-signin input[type="text"], .form-signin input[type="password"]{
+        border:1px solid #444444;
+        margin-bottom: 5px;     
+    }
+
+    #error{
+      color: white;
+      font-size: 1em;
+      text-align: center;
+      background: #ff000073;
+      border: 1px solid #a32525;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      padding: 5px;
+      display: none;
+    }
+ </style>
+</head>
+<body>
+
+	<div  class="fullscreen_bg">
+    <div class="">
+    	<form class="form-signin">
+    		<h1 class="form-signin-heading"><span style="color: #ffa900;">V</span>OTAR <!--<img src="/static/common/img/person.png" alt="" width="40px">--> </h1>
+        <div id="error"></div>
+        <input type="text" class="form-control" placeholder="{% trans "User" %}" required="" autofocus="" id="username">
+        <input type="password" class="form-control" placeholder="{% trans "Password" %}" required="" id="password">
+        {% csrf_token %}
+    		<button class="btn btn-lg btn-success btn-block" type="button" onclick="enviar()" style="margin-top: 15px;">{% trans "Login" %}</button>
+    	</form>
+      <script>
+    </script>
+    </div>	
+  </div>
+  <script>
+  $('#password').keypress(function(e) 
+  {
+     if(e.which == 13) 
+     {
+        enviar()
+     }
+  });
+  $('#username').keypress(function(e) 
+  {
+     if(e.which == 13) 
+     {
+        enviar()
+     }
+  });
+
+  </script>
+</body>
+</html>
