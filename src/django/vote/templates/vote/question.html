@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Muli|Oswald|Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+		body{
+
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#330f59+0,784ea0+50,330f59+100 */
+			background: #330f59; /* Old browsers */
+			background: -moz-linear-gradient(left, #330f59 0%, #784ea0 50%, #330f59 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #330f59 0%,#784ea0 50%,#330f59 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #330f59 0%,#784ea0 50%,#330f59 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#330f59', endColorstr='#330f59',GradientType=1 ); /* IE6-9 */
+		}
+		
+
+
+		#navbar {
+		  position: fixed; /* Set the navbar to fixed position */
+		  top: 0; /* Position the navbar at the bottom of the page */
+		  left: 0px;
+		  width: 100%; /* Full width */
+	      height: 40px;
+	      background: black;
+		}
+
+		@media (max-aspect-ratio: 1/1) {
+			#navbar{
+				height: 9vh;
+				transition: 0.2s linear;
+			}
+		}
+
+		/*
+		.mobile #navbar{
+			height: 9vh;
+		}*/
+
+		#navbar #content{
+			width: 675px;
+		    max-width: 100%;
+		    margin: auto;
+		    color:white;
+		    font-size: 25px;
+    		text-shadow: 1px 1px #4e4d4d;
+		}
+
+		@media (max-aspect-ratio: 1/1) {
+			#navbar #content{
+				width: 96%;
+				transition: 0.2s linear;
+			}
+		}
+
+		#back{
+			float:left;
+			padding: 3px 10px;
+		    border: 1px solid #505050;
+		    font-size: 17px;
+		    margin-top: 4px;
+		    border-radius: 5px;
+		    /* color: #6b6b6b; */
+		    background: #656565;
+		}
+
+		@media (max-aspect-ratio: 1/1) {
+			#back{
+				margin-left: 1%;
+			    height: 6vh;
+			    font-size: 3vh;
+			    margin-top: 1.5vh;
+			}
+		}
+
+		#time{
+			float: right;
+		}
+
+		@media (max-aspect-ratio: 1/1) {
+			#time{
+				float: right;
+			    margin-right: 1%;
+			    height: 6vh;
+			    font-size: 6vh;
+			}
+		}
+
+		#main{
+		    width: 700px;
+		    max-width: 100%;
+		    margin: auto;
+			margin-top: 50px;
+			font-size:0.8em;
+			margin-bottom: 40px;
+		}
+
+		@media (max-aspect-ratio: 1/1) {
+			#main{
+				width: 98%;
+				margin-top: 12vh;
+			}
+		}
+
+		.question{
+			padding: 15px;
+		    color: black;
+		    text-transform: uppercase;
+		    border-radius: 5px;
+		    background: white;
+		    text-align: center;
+		    width: 96%;
+
+		    margin: auto;
+		    margin-bottom: 25px;
+		}
+
+		.question p{
+			margin: 0px;
+		}
+
+		/* button div */
+		#buttons {
+			padding: 10px;
+		    color: black;
+		    text-transform: uppercase;
+		    margin: auto;
+		    border-radius: 5px;
+		    margin-top: 15px;
+		    text-align: center;
+		    transition: 0.05s linear;
+		    display: block;
+    		width: 96%;
+		}
+
+		.btn:active {
+		  transform: translate(0px, 5px);
+		  -webkit-transform: translate(0px, 5px);
+		  box-shadow: 0px 1px 0px 0px;
+		}
+
+		.white {
+		    background-color: #ffffff;
+		    box-shadow: 0px 5px 0px 0px #adadad;
+		}
+		
+
+		.white:hover {
+		  background-color: #fff57e;
+		}
+
+		#back:hover{
+			background: #ababab;
+		}
+
+		#back:active {
+		  transform: translate(0px, 1px);
+		  -webkit-transform: translate(0px, 1px);
+		  /*box-shadow: 0px 1px 0px 0px;*/
+		}
+	
+		#back a{
+			text-decoration: none;
+    		color: white;
+		}
+
+
+
+
+	</style>
+</head>
+<body id="body">
+
+
+	<div id="navbar">
+		<div id="content">
+			<div id="back">
+				<a href="/main/" ><i class="fas fa-arrow-alt-circle-left"></i> Back 2</a>
+			</div>
+			<div id="time" class="slide-fwd-center">
+				05:34 
+			</div>
+		</div>
+
+	</div>
+
+	<div id="main">
+		<div class="question">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ducimus doloremque, nihil dolorem quasi quod recusandae, ipsa voluptate. Excepturi in porro minima nihil id cupiditate molestiae officia quod temporibus ullam.</p>
+
+		</div>
+		<div id="buttons" class="btn white">
+			1
+		</div>
+		<div id="buttons" class="btn white">
+			2
+		</div>	
+		<div id="buttons" class="btn white">
+			3
+		</div>	
+		<div id="buttons" class="btn white">
+			4
+		</div>	
+	</div>
+
+	<script>
+
+	$( document ).ready(function() {
+		height=$(window).height();   // returns height of browser viewport
+		width=$(window).width();
+		//alert(height+" "+width);
+		mobile=false;
+
+		if (height>width){
+			mobile=true;
+		}
+
+		if (mobile){
+			//alert(mobile);
+			//$("body").addClass( "mobile" );
+		}
+	});
+
+	</script>
+
+</body>
+</html>

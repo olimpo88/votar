@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Muli|Oswald|Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+		body{
+
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#330f59+0,784ea0+50,330f59+100 */
+			background: #330f59; /* Old browsers */
+			background: -moz-linear-gradient(left, #330f59 0%, #784ea0 50%, #330f59 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #330f59 0%,#784ea0 50%,#330f59 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #330f59 0%,#784ea0 50%,#330f59 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#330f59', endColorstr='#330f59',GradientType=1 ); /* IE6-9 */
+			font-family: 'Open Sans', 'sans-serif';
+		}
+		
+		#navbar {
+		  position: fixed; /* Set the navbar to fixed position */
+		  top: 0; /* Position the navbar at the bottom of the page */
+		  left: 0px;
+		  width: 100%; /* Full width */
+	      height: 40px;
+	      background: black;
+		}
+
+		#main{
+		    width: 700px;
+		    max-width: 100%;
+		    margin: auto;
+			margin-top: 50px;
+		}
+
+		.question{
+			padding: 20px;
+		    color: black;
+		    text-transform: uppercase;
+		    border-radius: 5px;
+		    background: white;
+		}
+
+		/* button div */
+		#buttons {
+			padding: 20px;
+		    color: black;
+		    text-transform: uppercase;
+		    margin: auto;
+		    border-radius: 5px;
+		    margin-top: 20px;
+		    text-align: center;
+		    transition: 0.1s linear;
+		}
+
+		/* start da css for da buttons */
+		/*
+		.btn {
+		  border-radius: 5px;
+		  padding: 15px 25px;
+		  font-size: 1em;
+		  text-decoration: none;
+		  margin-top: 20px;
+		  color: #000;
+		  position: relative;
+		  display: inline-block;
+		  width: 100%;
+		}
+		*/
+
+		.btn:active {
+		  transform: translate(0px, 5px);
+		  -webkit-transform: translate(0px, 5px);
+		  box-shadow: 0px 1px 0px 0px;
+		}
+
+		.white {
+		    background-color: #ffffff;
+		    box-shadow: 0px 5px 0px 0px #adadad;
+		}
+		
+
+		.white:hover {
+		  background-color: #fff57e;
+		}
+
+		#navbar #content{
+			width: 700px;
+		    max-width: 100%;
+		    margin: auto;
+		    color:white;
+		    font-size: 25px;
+    		text-shadow: 1px 1px #4e4d4d;
+		}
+
+		#time{
+			float: right;
+		}
+		#back{
+			float:left;
+			padding: 3px 10px;
+		    border: 1px solid #505050;
+		    font-size: 17px;
+		    margin-top: 4px;
+		    border-radius: 5px;
+		    /* color: #6b6b6b; */
+		    background: #656565;
+		}
+
+		#back:hover{
+			background: #ababab;
+		}
+
+		#back:active {
+		  transform: translate(0px, 1px);
+		  -webkit-transform: translate(0px, 1px);
+		  /*box-shadow: 0px 1px 0px 0px;*/
+		}
+	
+		#back a{
+			text-decoration: none;
+    		color: white;
+		}
+		.slide-fwd-center {
+			-webkit-animation: slide-fwd-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite normal forwards;
+			        animation: slide-fwd-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite normal forwards;
+			        /*background: red;*/
+		}
+
+		@-webkit-keyframes slide-fwd-center {
+		  0% {
+		    -webkit-transform: translateZ(0);
+		            transform: translateZ(0);
+		  }
+		  100% {
+		    -webkit-transform: translateZ(160px);
+		            transform: translateZ(160px);
+		  }
+		}
+		@keyframes slide-fwd-center {
+		  0% {
+		    -webkit-transform: translateZ(0);
+		            transform: translateZ(0);
+		  }
+		  100% {
+		    	-webkit-transform: translateZ(160px);
+		        transform: translateZ(160px);
+		            /*
+		            font-size:30px;
+		            font-weight: bold; */
+		        text-shadow: 0 0 10px #ffffed;
+
+		  }
+		}
+
+
+	</style>
+</head>
+<body>
+
+
+	<div id="navbar">
+		<div id="content">
+			<div id="back">
+				<a href="/main/" ><i class="fas fa-arrow-alt-circle-left"></i> Back 2</a>
+			</div>
+			<div id="time" class="slide-fwd-center">
+				05:34 
+			</div>
+		</div>
+
+	</div>
+
+	<div id="main">
+		<div class="question">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ducimus doloremque, nihil dolorem quasi quod recusandae, ipsa voluptate. Excepturi in porro minima nihil id cupiditate molestiae officia quod temporibus ullam.</p>
+
+		</div>
+		<div id="buttons" class="btn white">
+			1
+		</div>
+		<div id="buttons" class="btn white">
+			2
+		</div>	
+		<div id="buttons" class="btn white">
+			3
+		</div>	
+		<div id="buttons" class="btn white">
+			4
+		</div>	
+	</div>
+
+</body>
+</html>

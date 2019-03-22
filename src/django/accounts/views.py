@@ -1,20 +1,14 @@
 #encoding:utf-8
 from django.contrib.auth import authenticate, login as djlogin, logout as djlogout
 from django.contrib.auth.decorators import login_required
-#from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse, HttpResponseRedirect
-#from django.utils import simplejson
 from django.shortcuts import render_to_response, render
 from django.template  import RequestContext
 import json
-
-#from servers.models import Activity_log
-#from common.utils import getForwardedFor
-from common.models import Activity_log
+from accounts.models import Activity_log
 from datetime import datetime, timedelta
-#from pyddns.views import main
 import base64
-#import requests
+
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -46,7 +40,7 @@ def dologin(request):
 					djlogin(request, user)
 					myjson['success'] = True
 					myjson['message'] = 'Bienvenido, %s!' % (user.get_full_name(),)
-					myjson['redirect'] = '/common/main/'
+					myjson['redirect'] = '/'
 					myjson['errors']['reason'] = 'Login correcto.'
 				else:
 					myjson['errors']['reason'] = 'Cuenta deshabilitada.'
@@ -67,7 +61,7 @@ def permission_denied(request):
 	return render(request,"permission_denied.html")
 
 @login_required
-def logout(request, next_page = '/common/login/'):
+def logout(request, next_page = '/accounts/login/'):
 	djlogout(request)
 	return HttpResponseRedirect(next_page)
 
